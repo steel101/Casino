@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head style="margin-top: 500px;">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="keywords"
+        content="Free Poker, play cards, Online Texas Hold'em, Free Texas Hold'em, Texas Hold'em Poker Game, Play Poker Online, No download poker, Multipli Player Poker, Web-based Poker, Virtual Poker, Browser Poker, Texas Hold'em Simulator, poker rules" />
+    <meta name="description" content="Free Poker. Play for free. No login. No app to install." />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/brands.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/solid.css" rel="stylesheet" />
+    <!-- Bootstrap CSS-->
+    <link href="https://bootswatch.com/5/spacelab/bootstrap.css" rel="stylesheet" id="themedStyle">
+
+    <link rel="stylesheet" href="https://aaronrs2002.github.io/black-jack/css/animate.min.css" />
+    <link href="https://aaronrs2002.github.io/black-jack/css/shared.css" rel="stylesheet">
+    <link href="https://aaronrs2002.github.io/black-jack/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <title>TEXAS HOLDEM</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJWFFXF8G0"></script>
+    <script>
+        const urlStr = window.location.href;
+        if (urlStr.indexOf("file:///Users/") !== -1 || urlStr.indexOf("exclude") !== -1) {
+            console.log("Not running GA");
+        } else {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-JJWFFXF8G0');
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 my-2  animated fadeInDown" alt="Online Texas Hold'em">
+                <button class="btn btn-success btn-block btn-lg p-2" title="Deal" onClick="javascript:deal()">Deal
+                    $10</button>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="alert alert-info" role="alert" id="notification">
+                    <div class="row">
+
+                        <div class="col-6">
+                            <h3>Balance: $<span id="playerMoney"></span></h3>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <h3 id="betTarget" alt="Texas Hold'em Poker Game">TEXAS HOLDEM </h3>
+
+                            <select class="form-control hide" id="howManyopponents"
+                                onClick="javascriptsetOpponentNumber()">
+                                <option value="1">1 opponent</option>
+                                <option value="2">2 opponents</option>
+                                <option value="3" selected>3 opponents</option>
+                            </select>
+
+                        </div>
+                        <div class="col-md-12 hide" id="status">
+
+                            <h3 id="message"></h3>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div id="communityCards"></div>
+                <div class="col-md-12">
+                    <div class="alert alert-info capitalize hide" id="communityCardDetails" role="alert"
+                        data-player="4"></div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="btn-group block my-1" role="group">
+                    <button class="btn btn-success hide" data-round="max" title="max"
+                        onClick="javascript:match(false,3)">Max</button>
+                    <button class="btn btn-success hide" data-round="raise" title="raise"
+                        onClick="javascript:match(false,2)">Raise
+                        to <span id="raiseAmt"></span></button>
+                    <button class="btn btn-success hide" data-round="match" title="match"
+                        onClick="javascript:match(false,1)">Match</button>
+                    <button class="btn btn-success hide" data-round="check" title="check"
+                        onClick="javascript:match(true,1)">Check</button>
+                    <button id="foldBt" class="btn btn-danger hide" onClick="javascript:fold()">Fold</button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row playersRow">
+            <div class="col-md-3">
+
+                <div class="col-md-12">
+                    <div id="playerCards"></div>
+                </div>
+
+                <div class="col-md-12 py-1">
+                    <div class="alert alert-info hide" role="alert" id="playerHandDetails" data-player="0"></div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-12" id="playerTwoCards">
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-info hide" data-status="" id="playerTwoHandDetails" role="alert"
+                        data-player="1"></div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="col-md-12" id="playerThreeCards">
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-info hide" data-status="" id="playerThreeHandDetails" role="alert"
+                        data-player="2"></div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="col-md-12" id="playerFourCards">
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-info hide" data-status="" id="playerFourHandDetails" role="alert"
+                        data-player="3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 py-1">
+
+            
+
+            
+        
+
+    </div>
+    </div>
+
+    <div class="hide alert fadeInUp" role="alert" id="globalAlert"></div>
+    
+
+</body>
+<script src="https://aaronrs2002.github.io/black-jack/js/cards.js"></script>
+<script src="js/functionality.js"></script>
+<script src="js/navigation.js"></script>
+
+</html>
