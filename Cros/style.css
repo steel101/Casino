@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+margin-bottomomoms.googleapis.com/css?family=Press+Start+2P");
 
 body {
   margin: 0;
@@ -46,7 +46,7 @@ button {
   grid-template-rows: auto auto;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 #controlls button {
   width: 100%;
